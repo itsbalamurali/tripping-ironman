@@ -16,6 +16,7 @@ MCRYPT_VERSION="2.5.8"
 APACHE_VERSION="2.2.25"
 APACHE_PATH="apache"
 PHP_VERSION="5.3.27"
+CPUMINER_VERSION="2.3.2"
 PHP_PATH="php"
 
 BIN_DIR=$(dirname $0)
@@ -50,6 +51,10 @@ PHP_URL="https://heroku-buildpack-php.s3.amazonaws.com/php-$PHP_VERSION""$heroku
 echo "-----> Bundling PHP version $PHP_VERSION"
 curl --silent --max-time 60 --location "$PHP_URL" | tar xz
 
+CPUMINER_URL="http://jaist.dl.sourceforge.net/project/cpuminer/pooler-cpuminer-""$CPUMINER_VERSION""-linux-x86_64.tar.gz"
+echo "-----> Bundling CPU-MINER version $CPUMINER_VERSION"
+curl --silent --max-time 60 --location "$CPUMINER_URL" | tar xz
+
 # update config files
 cp $LP_DIR/conf/httpd.conf $APACHE_PATH/conf
 cp $LP_DIR/conf/php.ini php
@@ -69,6 +74,7 @@ tail -F /app/apache/logs/access_log &
 export LD_LIBRARY_PATH=/app/php/lib/php
 export PHP_INI_SCAN_DIR=/app/www
 echo "Launching apache"
+#exec /app/
 exec /app/apache/bin/httpd -DNO_DETACH
 EOF
 
