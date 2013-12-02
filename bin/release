@@ -5,6 +5,5 @@ cat <<EOF
 ---
 default_process_types:
   web: sh boot.sh
-  worker: sh mine.sh
 EOF
 
